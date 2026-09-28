@@ -1,0 +1,49 @@
+### C++
+# Object files
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Static libraries
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Debug files
+*.dSYM/
+*.idb
+*.pdb
+
+### Windows
+# Windows thumbnail cache files
+Thumbs.db
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows shortcuts
+*.lnk
+Plugins/BP2AI/Binaries/Win64/UnrealEditor-BP2AI.dll
+Plugins/BP2AI/Binaries/Win64/UnrealEditor-BP2AI.pdb
+*.dll
+Plugins/BP2AI/Intermediate
+Plugins/BP2AI/Binaries
