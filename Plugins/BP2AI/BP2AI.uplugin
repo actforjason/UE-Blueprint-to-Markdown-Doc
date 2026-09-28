@@ -10,7 +10,7 @@
 	"DocsURL": "https://www.a-maze.games/blog/bp2ai-translator-unreal-plugin",
 	"MarketplaceURL": "com.epicgames.launcher://ue/Fab/product/6ccff7cf-f752-4b98-85d02c9d8a071792",
 	"SupportURL": "",
-	"EngineVersion": "5.4.0",
+	"EngineVersion": "5.8.0",
 	"CanContainContent": false,
 	"Installed": true,
 	"Modules": [

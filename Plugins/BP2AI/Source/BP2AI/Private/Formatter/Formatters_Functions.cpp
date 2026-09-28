@@ -54,7 +54,7 @@ namespace MarkdownNodeFormatters_Private
 		
         // Check if it's a common unary operator (like Not_PreBool, handled by HandleUnaryOperator)
         if (FuncName == TEXT("Not_PreBool")) {
-            UE_LOG(LogFormatter, Verbose, TEXT("  FormatCallFunction: Detected as Unary Operator (Not_PreBool). Context: '%s'."), *FuncName, *CurrentBlueprintContext);
+            UE_LOG(LogFormatter, Verbose, TEXT("  FormatCallFunction: Detected as Unary Operator (%s). Context: '%s'."), *FuncName, *CurrentBlueprintContext);
         	UE_LOG(LogFormatter, Error, TEXT("🔧 DEBUG FUNCTION: MATCHED Not_PreBool - routing to UnaryOperator"));
 
         	
@@ -64,7 +64,7 @@ namespace MarkdownNodeFormatters_Private
         }
         // Check if it's a common binary operator (like Percent, handled by HandleOperator)
         if (FuncName == TEXT("Percent_FloatFloat") || FuncName == TEXT("Percent_IntInt")) {
-             UE_LOG(LogFormatter, Verbose, TEXT("  FormatCallFunction: Detected as Binary Operator (Percent). Context: '%s'."), *FuncName, *CurrentBlueprintContext);
+             UE_LOG(LogFormatter, Verbose, TEXT("  FormatCallFunction: Detected as Binary Operator (%s). Context: '%s'."), *FuncName, *CurrentBlueprintContext);
         	UE_LOG(LogFormatter, Error, TEXT("🔧 DEBUG FUNCTION: MATCHED Percent - routing to Operator"));
 
         	// Delegate formatting to MarkdownFormattingUtils, which will handle RVR and context

@@ -387,14 +387,14 @@ void FBP2AIBatchExporter::LogExportResult(const FString& GraphName, const FStrin
 
         if (!Title.IsEmpty() && Title.Len() > 120)
         {
-            Title.LeftInline(120, /*bAllowShrinking*/ false); Title += TEXT(" ...[truncated]");
+            Title.LeftInline(120, EAllowShrinking::No); Title += TEXT(" ...[truncated]");
         }
 
         UE_LOG(LogBP2AI, Log, TEXT("[Block %d/%d] %s"), b + 1, BlocksToShow, Title.IsEmpty() ? TEXT("<no title>") : *Title);
         for (int32 i = 0; i < Show; ++i)
         {
             FString Line = Lines[i];
-            if (Line.Len() > MaxLineLength) { Line.LeftInline(MaxLineLength, false); Line += TEXT(" ...[truncated]"); }
+            if (Line.Len() > MaxLineLength) { Line.LeftInline(MaxLineLength, EAllowShrinking::No); Line += TEXT(" ...[truncated]"); }
             UE_LOG(LogBP2AI, Log, TEXT("   [%02d] %s"), i + 1, *Line);
         }
         if (Lines.Num() > Show)

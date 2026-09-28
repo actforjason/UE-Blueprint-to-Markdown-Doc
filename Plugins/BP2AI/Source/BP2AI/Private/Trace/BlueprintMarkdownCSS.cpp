@@ -36,7 +36,7 @@ FString FBlueprintMarkdownCSS::GetThemeVariablesCSS()
         /* =================================================================== */
         :root {
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
-            --font-mono: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+            --font-mono: 'Cascadia Code', 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
 
             --color-bg: #111014;
             --color-bg-sidebar: #19181D;
@@ -91,9 +91,9 @@ FString FBlueprintMarkdownCSS::GetLayoutStructureCSS()
             flex-direction: column;
         }
 
-        #main-content { 
-            padding: 64px; 
-            overflow-y: auto; 
+        #main-content {
+            padding: 16px;
+            overflow-y: auto;
         }
         
         .content-wrapper { 
@@ -130,7 +130,7 @@ FString SidebarStyles = TEXT(R"(
 
     #sidebar-header {
         flex-shrink: 0;
-        padding: 32px 32px 24px 32px;
+        padding: 12px 12px 10px 12px;
         background-color: var(--color-bg-sidebar);
         border-bottom: 1px solid var(--color-border);
         position: sticky;
@@ -141,13 +141,13 @@ FString SidebarStyles = TEXT(R"(
     #toc-nav {
         flex-grow: 1;
         overflow-y: auto;
-        padding: 16px 32px 32px 32px;
+        padding: 8px 12px 12px 12px;
     }
 
     #sidebar-title {
         font-size: 16px;
         font-weight: 600;
-        margin: 0 0 16px 0;
+        margin: 0 0 8px 0;
         display: flex;
         align-items: center;
         gap: 8px;
@@ -303,7 +303,7 @@ FString SidebarStyles = TEXT(R"(
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--color-text-secondary);
-            margin: 24px 0 8px 0;
+            margin: 16px 0 6px 0;
             padding-bottom: 4px;
         }
 
@@ -313,7 +313,7 @@ FString SidebarStyles = TEXT(R"(
             text-transform: uppercase;
             letter-spacing: 0.8px;
             color: var(--color-text-faded);
-            margin: 32px 0 16px 0;
+            margin: 20px 0 10px 0;
             padding-bottom: 8px;
             border-bottom: 1px solid var(--color-border);
         }
@@ -329,9 +329,9 @@ FString SidebarStyles = TEXT(R"(
             color: var(--color-text-secondary);
             text-decoration: none;
             font-size: 14px;
-            padding: 8px 12px;
+            padding: 4px 8px;
             border-radius: var(--radius-md);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             position: relative;
         }
         
@@ -388,20 +388,20 @@ FString FBlueprintMarkdownCSS::GetMainContentCSS()
             text-transform: uppercase;
             letter-spacing: 0.8px;
             color: var(--color-text-faded);
-            margin: 64px 0 16px 0;
-            padding-bottom: 8px;
+            margin: 16px 0 8px 0;
+            padding-bottom: 4px;
             border-bottom: 1px solid var(--color-border);
         }
-        
-        .content-heading:first-of-type { 
-            margin-top: 0; 
+
+        .content-heading:first-of-type {
+            margin-top: 0;
         }
 
         .content-section {
             border: 1px solid var(--color-border);
             background-color: var(--color-bg-sidebar);
             border-radius: var(--radius-lg);
-            margin-bottom: 32px;
+            margin-bottom: 10px;
         }
         
         .content-section[open] {
@@ -409,13 +409,13 @@ FString FBlueprintMarkdownCSS::GetMainContentCSS()
         }
 
         .section-header {
-            padding: 16px 24px;
+            padding: 8px 12px;
             cursor: pointer;
             list-style: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 16px;
+            gap: 10px;
         }
         
         .section-header::-webkit-details-marker { 
@@ -477,32 +477,32 @@ FString FBlueprintMarkdownCSS::GetMainContentCSS()
             transform: rotate(90deg); 
         }
 
-        .section-body { 
-            padding: 0 24px 24px 24px; 
-            border-top: 1px solid var(--color-border); 
+        .section-body {
+            padding: 0 12px 12px 12px;
+            border-top: 1px solid var(--color-border);
         }
-        
+
         .section-body h4 {
             font-size: 12px;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--color-text-secondary);
-            margin: 24px 0 12px 0;
+            margin: 12px 0 6px 0;
         }
-        
-        .io-list { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 8px; 
+
+        .io-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
-        
+
         .io-item {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             background-color: var(--color-bg-inset);
-            padding: 8px 12px;
+            padding: 4px 8px;
             border-radius: var(--radius-sm);
             border: 1px solid var(--color-border);
         }
@@ -921,19 +921,19 @@ FString FBlueprintMarkdownCSS::GetCodeBlockBaseCSS()
         pre {
             font-family: var(--font-mono);
             font-size: 13px;
-            line-height: 1.7;
+            line-height: 1.45;
             background-color: var(--color-bg);
             border: 1px solid var(--color-border);
-            padding: 20px;
+            padding: 10px;
             border-radius: var(--radius-md);
             overflow-x: auto;
             margin: 0;
         }
-        
+
         .copy-btn {
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 6px;
+            right: 6px;
             background-color: var(--color-bg-content);
             border: 1px solid var(--color-border);
             color: var(--color-text-secondary);
@@ -1200,38 +1200,46 @@ FString FBlueprintMarkdownCSS::GetScrollbarCSS()
         /* 7. CUSTOM SCROLLBARS & RESPONSIVE DESIGN
         /* =================================================================== */
         
-        ::-webkit-scrollbar { 
-            width: 10px; 
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
         }
-        
-        ::-webkit-scrollbar-track { 
-            background: transparent; 
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
         }
-        
-        ::-webkit-scrollbar-thumb { 
-            background: rgba(255, 255, 255, 0.1); 
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid transparent;
+            background-clip: padding-box;
             border-radius: 5px;
         }
-        
-        ::-webkit-scrollbar-thumb:hover { 
-            background: rgba(255, 255, 255, 0.2); 
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+            background-clip: padding-box;
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: transparent;
         }
 
         /* Responsive breakpoints for smaller screens */
         @media (max-width: 1024px) {
             body {
-                grid-template-columns: 240px 1fr;
+                grid-template-columns: 220px 1fr;
             }
-            
+
             #sidebar {
-                padding: 24px;
+                padding: 12px;
             }
             
             #main-content {
-                padding: 48px;
+                padding: 12px;
             }
         }
-        
+
         @media (max-width: 768px) {
             body {
                 grid-template-columns: 1fr;
@@ -1245,7 +1253,7 @@ FString FBlueprintMarkdownCSS::GetScrollbarCSS()
             }
             
             #main-content {
-                padding: 24px;
+                padding: 10px;
             }
         }
     )");

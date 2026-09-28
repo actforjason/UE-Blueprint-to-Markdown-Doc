@@ -279,7 +279,7 @@ void FHTMLDocumentBuilder::AddGraphDefinitionWithCopyData(
         else if (!HTMLGraphDef.ExecutionFlow.IsEmpty())
         {
             // Links are generated upstream now. Simply join the pre-formatted lines.
-            FString JoinedFlow = FString::Join(HTMLGraphDef.ExecutionFlow, TEXT("<br />\n"));
+            FString JoinedFlow = FString::Join(HTMLGraphDef.ExecutionFlow, TEXT("\n"));
             OutLines.Add(JoinedFlow);
         }
         else
@@ -724,7 +724,7 @@ void FHTMLDocumentBuilder::ProcessSemanticExecutionSteps(const TArray<FSemanticE
         FormattedLines.Add(HTMLSemanticFormatter->FormatExecutionStep(Step));
     }
     
-    FString JoinedContent = FString::Join(FormattedLines, TEXT("<br />\n"));
+    FString JoinedContent = FString::Join(FormattedLines, TEXT("\n"));
     OutLines.Add(JoinedContent);
 }
 
@@ -948,12 +948,13 @@ void FHTMLDocumentBuilder::AddExecutionTraceCard(
     OutLines.Add(TEXT("                <h4>Execution Flow</h4>"));
     OutLines.Add(TEXT("                <div class=\"code-container\">"));
     
-    // ✅ RESTORED: Legacy approach with <br /> tags for proper HTML display
+    // Join with newlines: inside <pre> a "\n" already breaks the line, and a
+    // <br /> on top of it would double every line's height.
     OutLines.Add(TEXT("                    <pre><code class=\"language-blueprint\">"));
     if (!HTMLTrace.ExecutionLines.IsEmpty())
     {
         // Links are now generated upstream. Simply join the pre-formatted lines.
-        FString JoinedContent = FString::Join(HTMLTrace.ExecutionLines, TEXT("<br />\n"));
+        FString JoinedContent = FString::Join(HTMLTrace.ExecutionLines, TEXT("\n"));
         OutLines.Add(JoinedContent);
     }
     else
@@ -968,7 +969,7 @@ void FHTMLDocumentBuilder::AddExecutionTraceCard(
     OutLines.Add(TEXT("        </details>"));
 }
 
-// ✅ CORRECTED: Graph definition card with legacy <br /> approach  
+// ✅ CORRECTED: Graph definition card with newline-joined execution flow
 void FHTMLDocumentBuilder::AddGraphDefinitionCard(
     const FGraphDefinitionEntry& HTMLGraphDef,
     const FGraphDefinitionEntry* MarkdownGraphDef,
@@ -1023,7 +1024,7 @@ void FHTMLDocumentBuilder::AddGraphDefinitionCard(
     // Add I/O sections
     AddModernIOSection(HTMLGraphDef, TEXT("Inputs"), true, OutLines);
     
-    // ✅ RESTORED: Execution flow section with legacy <br /> approach
+    // ✅ Execution flow section, lines joined with "\n" for <pre>
     if (!HTMLGraphDef.bIsPure && !HTMLGraphDef.ExecutionFlow.IsEmpty())
     {
         OutLines.Add(TEXT("                <h4>Execution Flow</h4>"));
@@ -1031,7 +1032,7 @@ void FHTMLDocumentBuilder::AddGraphDefinitionCard(
         OutLines.Add(TEXT("                    <pre><code class=\"language-blueprint\">"));
     
         // Links are now generated upstream. Simply join the pre-formatted lines.
-        FString JoinedFlow = FString::Join(HTMLGraphDef.ExecutionFlow, TEXT("<br />\n"));
+        FString JoinedFlow = FString::Join(HTMLGraphDef.ExecutionFlow, TEXT("\n"));
         OutLines.Add(JoinedFlow);
     
         OutLines.Add(TEXT("                    </code></pre>"));
@@ -1172,7 +1173,7 @@ void FHTMLDocumentBuilder::AddExecutionFlowSection(
         OutLines.Add(TEXT("                    <pre><code class=\"language-blueprint\">"));
     
         // Links are generated upstream now. Simply join the pre-formatted lines.
-        // NOTE: The legacy code joined with "\n", which is fine for <pre>. Using <br />\n is also fine. Let's stick to the original here.
+        // NOTE: Join with "\n" only. A "<br />\n" would render two breaks per line inside <pre>.
         FString JoinedFlow = FString::Join(GraphDef.ExecutionFlow, TEXT("\n"));
         OutLines.Add(JoinedFlow);
     
